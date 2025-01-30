@@ -38,29 +38,31 @@ story = "I punched Wal-Mart in a massive way";
 			//Read the different parts of the story and concatenate the resulting
 			//story using the symbols to tell you the parts of speech
 			Scanner reader = new Scanner(new File("story.dat"));
-			Scanner chopper = new Scanner(story);
+		
 
 			//While there is more of the story, read in the word/symbol
 			while(reader.hasNext())
 			{
-				if(reader.next().equals("&"))
+				String chop = reader.next();
+				if(chop.equals("&"))
 				{
 					story+=(getRandomAdjective());
 					story += " ";
 				}
-				else if(reader.next().equals("#"))
+				else if(chop.equals("#"))
 				{
 					story+=(getRandomNoun());
 					story += " ";
 				}
-				else if(reader.next().equals("@"))
+				else if(chop.equals("@"))
 				{
 					story+=(getRandomVerb());
 					story += " ";
 				}
 				else 
 				{
-					reader.hasNext();
+					story += chop;
+					story += " ";
 				}
 			}
 				//If what was read in is one of the symbols, find a random
@@ -68,7 +70,6 @@ story = "I punched Wal-Mart in a massive way";
 			
 
 			reader.close();
-			chopper.close();
 		}
 		catch(Exception e)
 		{
